@@ -115,7 +115,7 @@ def get_wandb_run_name(model_name, dataset, num_layers, latent_dim, **kwargs):
 
 
 def get_dataset(data_path: str, dataset: BasicDataset):
-    if dataset in ["gowalla", "yelp2018", "amazon-book", "citeulike", "movielens", "amazon-beauty", "amazon-cds", "amazon-electro", "amazon-movies"]:
+    if dataset in ["gowalla", "yelp2018", "amazon-book", "citeulike", "movielens", "amazon-beauty", "amazon-cds", "amazon-electro", "amazon-electronics", "amazon-movies"]:
         return Loader(
             config=world.config,
             path=os.path.join(data_path, dataset))
