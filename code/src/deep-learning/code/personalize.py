@@ -2,7 +2,7 @@ from openai import OpenAI
 
 client = OpenAI(
   base_url="https://openrouter.ai/api/v1",
-  api_key="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",
+  api_key="",
 )
 
 user_likes = ["PlayStation 5", "iPhone 15"]
