@@ -4,8 +4,8 @@ import utils
 from models import LightGCN
 import torch
 
-weights = "/Users/shayan/Desktop/test/Echomind/code/src/deep-learning/code/checkpoints/lgn_amazon-electronics_layers-5_latent_dim-196_bpr_batch_size-2048_dropout-0_keep_prob-0.6_A_n_fold-100_test_u_batch_size-100_lr-0.01_decay-1e-06_seed-2020.pt"
-dataset = utils.get_dataset(world.DATA_PATH, "amazon-electro")
+weights = "/Users/shayan/Desktop/Echomind/code/src/deep-learning/code/checkpoints/lgn_amazon-electronics_layers-4_latent_dim-128_bpr_batch_size-2048_dropout-0_keep_prob-0.6_A_n_fold-100_test_u_batch_size-100_lr-0.001_decay-1e-06_seed-2020.pt"
+dataset = utils.get_dataset(world.DATA_PATH, "amazon-electronics")
 
 config = world.config
 config["lightGCN_n_layers"] = 5

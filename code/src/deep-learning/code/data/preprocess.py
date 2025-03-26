@@ -1,5 +1,6 @@
 import random
 import json
+import pandas as pd
 
 def write_data(path, data):
     f = open(path, 'w')
@@ -138,22 +139,17 @@ def dataset_split(Interaction):
     #print(item_interaction)
     return user_interaction, validation_data, test_data
 
-core = 14
-path_read = '/Users/shayan/Downloads/LightGCN-main/data/amazon-electronics/Electronics_5.json'
-path_train = '/Users/shayan/Downloads/LightGCN-main/data/amazon-electronics/train_data.json'
-path_test = '/Users/shayan/Downloads/LightGCN-main/data/amazon-electronics/test_data.json'
-path_validation = '/Users/shayan/Downloads/LightGCN-main/data/amazon-electronics/validation_data.json'
+core = 19
+path_read = '//Users/shayan/Desktop/Echomind/code/src/deep-learning/data/amazon-electronics/Electronics.csv'
+path_train = '/Users/shayan/Desktop/Echomind/code/src/deep-learning/data/amazon-electronics/train_data.json'
+path_test = '/Users/shayan/Desktop/Echomind/code/src/deep-learning/data/amazon-electronics/test_data.json'
+path_validation = '/Users/shayan/Desktop/Echomind/code/src/deep-learning/data/amazon-electronics/validation_data.json'
 
-Interaction = []   #record the interaction
-with open(path_read) as f:
-    for line in f:
-        line = eval(line)
-        user_id = line['reviewerID']
-        item_id = line['asin']
-        # need to use tuple (user_id, item_id) rather than a list [user_id, item_id] since list is unhashable
-        Interaction.append((user_id, item_id))
-Interaction = list(set(Interaction))
-f.close()
+
+df = pd.read_csv(path_read)
+
+Interaction = list(set(zip(df['user_id'], df['parent_asin'])))
+
 #print(Interaction[0:10])
 Interaction = dataset_filtering(Interaction, core)
 #print(Interaction[0:10])
@@ -165,5 +161,5 @@ write_data(path_train, train_data)
 write_data(path_validation, validation_data)
 write_data(path_test, test_data)
 
-with open("/Users/shayan/Downloads/LightGCN-main/data/amazon-electronics/item_num2id.json", "w") as f:
+with open("/Users/shayan/Desktop/Echomind/code/src/deep-learning/data/amazon-electronics/item_num2id.json", "w") as f:
     json.dump(item_num2id, f)

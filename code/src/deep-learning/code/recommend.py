@@ -7,7 +7,7 @@ from models import LightGCN
 import world
 
 # Load dataset
-weights = "/Users/shayan/Desktop/test/Echomind/code/src/deep-learning/code/checkpoints/beast.pt"
+weights = "/Users/shayan/Desktop/Echomind/code/src/deep-learning/code/checkpoints/lgn_amazon-electronics_layers-4_latent_dim-128_bpr_batch_size-2048_dropout-0_keep_prob-0.6_A_n_fold-100_test_u_batch_size-100_lr-0.001_decay-1e-06_seed-2020.pt"
 dataset = utils.get_dataset(world.DATA_PATH, "amazon-electronics")
 
 config = world.config
@@ -50,17 +50,6 @@ def recommend_from_items(item1_id, item2_id, top_k = 5):
 
     print("Top items:")
     for item_id in recommended:
-        print(item_num2id[item_id])
+        print(item_num2id[item_id])  # index -> asin
+
     return recommended
-
-# Example items
-item_1 = "B000S5Q9CA"
-item_2 = "B0012GK3MQ"
-
-key_1 = item_id2num.get(item_1)
-key_2 = item_id2num.get(item_2)
-
-if key_1 is None or key_2 is None:
-    print("One or both items not found in item_id2num.")
-else:
-    recommend_from_items(key_1, key_2)
